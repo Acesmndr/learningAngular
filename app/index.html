@@ -15,8 +15,10 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">  
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-app="myApp" ng-controller="StoreController as store">
+<body ng-app="myApp" >
+	<div superman></div><br>
 	<input type="text" ng-model="searchText"></input>
+	<div ng-controller="StoreController as store">
 	<div ng-repeat="item in store.product|filter:searchText" ng-hide="item.soldOut" class="well" ng-sortable>
   <h1> {{ item.name }} </h1>
   <h2> {{ item.price}}</h2>
@@ -41,6 +43,8 @@
 				<p>None Yet</p>
 		</div>
 	</div>
+	</div>
+<superhero batman>Aces is batman</superhero>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
