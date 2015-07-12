@@ -16,8 +16,31 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="StoreController as store">
-  <h1> {{ store.product.name }} </h1>
-  <h2> {{store.product.price}}</h2>
+	<input type="text" ng-model="searchText"></input>
+	<div ng-repeat="item in store.product|filter:searchText" ng-hide="item.soldOut" class="well" ng-sortable>
+  <h1> {{ item.name }} </h1>
+  <h2> {{ item.price}}</h2>
+	<button ng-show="item.canPurchase" class="btn btn-primary">Add to Cart</button>
+	<section ng-init="tab=1">
+		<ul class='nav nav-pills'>
+			<li><a href ng-click='tab=1'>Description</a></li>
+			<li><a href ng-click='tab=2'>Specification</a></li>
+			<li><a href ng-click='tab=3'>Review</a></li>
+		</ul>
+		</section>
+		<div class="panel" ng-show="tab ===1 ">
+				<h4>Description</h4>
+				<p>{{item.name}}</p>
+		</div>
+		<div class="panel" ng-show="tab ===2 ">
+				<h4>Specification</h4>
+				<p>{{item.price}}</p>
+		</div>
+		<div class="panel" ng-show="tab ===3 ">
+				<h4>Review</h4>
+				<p>None Yet</p>
+		</div>
+	</div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
